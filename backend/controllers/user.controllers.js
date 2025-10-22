@@ -1,4 +1,4 @@
-import User from "../models/user.model";
+import User from "../models/user.model.js";
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
@@ -20,7 +20,9 @@ const registerUser = async(req,res)=>{
      const newUser =await new User({email,username,password:hashPass});
      await newUser.save();
 
+     console.log("user registered successfully");
      return res.status(200).json({message: "user registered successfully", newUser})
+     
    } catch (error) {
     console.log("err while registering user",error.message);
     return res.status(400).json("err while registering user")

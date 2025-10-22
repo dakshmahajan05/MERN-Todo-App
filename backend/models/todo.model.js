@@ -1,5 +1,5 @@
 import mongoose, { mongo, Types } from 'mongoose'
-import User from './user.model'
+import User from './user.model.js'
 
 const TodoSchema = new mongoose.Schema({
     text:{
