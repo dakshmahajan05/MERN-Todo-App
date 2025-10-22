@@ -15,7 +15,12 @@ app.get('/',(req,res)=>{
 //mongoDB connection 
 connectDB()
 
+app.use(express.json())
 
+
+import userRoute from './routes/user.routes.js'
+
+app.use('/api/v1/user',userRoute)
 
 const PORT = process.env.PORT || 4000
 
