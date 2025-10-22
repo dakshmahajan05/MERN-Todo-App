@@ -15,6 +15,8 @@ app.get('/',(req,res)=>{
 //mongoDB connection 
 connectDB()
 
+
+
 const PORT = process.env.PORT || 4000
 
 app.listen(PORT,()=>{
