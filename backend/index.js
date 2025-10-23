@@ -19,8 +19,11 @@ app.use(express.json())
 
 
 import userRoute from './routes/user.routes.js'
+import todoRoute from './routes/todo.routes.js'
 
 app.use('/api/v1/user',userRoute)
+app.use('/api/v1/todo',todoRoute)
+
 
 const PORT = process.env.PORT || 4000
 
