@@ -3,7 +3,6 @@ import { Route,Routes } from 'react-router-dom'
 import TodoPage from './pages/TodoPage'
 import Login from './pages/Login'
 import Register from './pages/Register'
-import Todo from '../../backend/models/todo.model'
 
 const App = () => {
   return (
