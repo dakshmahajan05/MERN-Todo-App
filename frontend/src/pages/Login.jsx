@@ -1,8 +1,12 @@
 import React, { useState } from 'react'
+import { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { AuthContext } from '../Context/AuthContext'
 
 
 const Login = () => {
+  const {login} = useContext(AuthContext)
+
   const [formdata,setFormData] = useState({
     'email':'',
     'password':''
@@ -14,7 +18,8 @@ const Login = () => {
   const handlesubmit= async(e)=>{
     e.preventDefault();
     console.log("Form Data:", formdata);
-    alert("heyyy")
+    await login(formdata);
+    alert("login succesfull")
 
   }
 

@@ -1,6 +1,12 @@
 import React, { useState } from 'react'
+import { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { AuthContext } from '../Context/AuthContext'
 const Register = () => {
+
+  const {register} = useContext(AuthContext)
+
+
   const [formdata,setformdata] = useState({
     'email':'',
     'username':'',
@@ -14,7 +20,8 @@ const Register = () => {
   const handlesubmit= async(e)=>{
     e.preventDefault()
     console.log("formdata: ",formdata);
-    alert("register.jsx working")
+    await register(formdata);
+    alert("registered")
   }
   return (
    <div className='bg-slate-100 flex flex-col h-screen justify-center items-center '>
