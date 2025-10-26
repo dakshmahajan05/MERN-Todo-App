@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../Context/AuthContext'
 
 
 const Login = () => {
   const {login} = useContext(AuthContext)
+
+  const navigate = useNavigate()
 
   const [formdata,setFormData] = useState({
     'email':'',
@@ -17,8 +19,11 @@ const Login = () => {
 
   const handlesubmit= async(e)=>{
     e.preventDefault();
-    console.log("Form Data:", formdata);
-    await login(formdata);
+    const res = await login(formdata);
+    if(res && res.token){
+      navigate('/todo')
+    }
+
     alert("login succesfull")
 
   }
