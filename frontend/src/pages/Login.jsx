@@ -21,11 +21,11 @@ const Login = () => {
     e.preventDefault();
     const res = await login(formdata);
     if(res && res.token){
+      alert("login succesfull")
       navigate('/todo')
+    }else{
+      alert("login failed")
     }
-
-    alert("login succesfull")
-
   }
 
   return (
@@ -35,7 +35,7 @@ const Login = () => {
             <input onChange={handlechange} name='email' value={formdata.email} className='bg-white px-3 py-2 rounded-xl border' type="email" placeholder='Enter Your Email'/>
             <input onChange={handlechange} name='password' value={formdata.password} className='bg-white mb-6 px-3 py-2 rounded-xl border' type="password" placeholder='Enter Your Password'/>
             <p>not a user? <Link to='/signup' className='text-sm text-blue-700'>Register now</Link> </p>
-            <button onClick={handlesubmit} className='w-full bg-blue-600 text-white py-1 hover:bg-blue-500 cursor-pointer rounded-xl' type='submit'>Login</button>
+            <button className='w-full bg-blue-600 text-white py-1 hover:bg-blue-500 cursor-pointer rounded-xl' type='submit'>Login</button>
         </form>
 
     </div>

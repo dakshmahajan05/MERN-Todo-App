@@ -23,10 +23,10 @@ const AuthContextProvider = (props)=>{
 
     const login = async(formdata)=>{
         try {
-            const res = API.post('/user/login',formdata)
-            console.log("register response: ",res.data);
+            const res =await API.post('/user/login',formdata)
+            console.log("login response: ",res.data);
             setuser(res.data.user)
-            localStorage.setItem("token",(await res).data.token)
+            localStorage.setItem("token",res.data.token)
             return res.data
             
         } catch (error) {

@@ -7,6 +7,7 @@ const TodoContextProvider= (props)=>{
 
     const [todo,setTodo] = useState([])
 
+
     const fetchTodo = async()=>{
         try {
             const res = await API.get('/todo/get')
@@ -38,16 +39,19 @@ const TodoContextProvider= (props)=>{
         }
     }
 
-    const updateTodo = async(id)=>{
-        const res = await API.put(`/todo/update/${id}`)
-        setTodo((prev)=>(
-            prev.map((todo)=>(todo._id===id? res.data.updatedTodo:todo))
-        ))
-    }
+   const updateTodo = async(id, updatedData) => {
+  try {
+    const res = await API.put(`/todo/update/${id}`, updatedData); // send {text,completed}
+    setTodo(prev => prev.map(todo => todo._id === id ? res.data.updatedTodo : todo));
+  } catch (err) {
+    console.log("Error updating todo:", err.response?.data || err.message);
+  }
+}
 
     useEffect(()=>{
-        fetchTodo();
+        fetchTodo()
     },[])
+   
     return (
         <TodoContext.Provider value={{todo,addTodo,fetchTodo,deleteTodo,updateTodo}}>
             {props.children}

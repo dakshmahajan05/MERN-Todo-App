@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../Context/AuthContext'
 const Register = () => {
 
@@ -16,12 +16,14 @@ const Register = () => {
   const handlechange = async(e)=>{ 
     setformdata(prev=>({...prev,[e.target.name]:e.target.value}))
   }
+  const navigate = useNavigate()
 
   const handlesubmit= async(e)=>{
     e.preventDefault()
     console.log("formdata: ",formdata);
     await register(formdata);
     alert("registered")
+    navigate('/login')
   }
   return (
    <div className='bg-slate-100 flex flex-col h-screen justify-center items-center '>
